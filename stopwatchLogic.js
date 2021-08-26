@@ -12,7 +12,6 @@ const createStopwatch = () => {
 			document.getElementById('currentTime').innerText = currentTime;
 		},
 		start: function () {
-			console.log(currentTime);
 			isRunning = true;
 			countdown = setInterval(() => {
 				if (currentTime > 0) {
@@ -29,8 +28,7 @@ const createStopwatch = () => {
 		},
 		clear: function () {
 			clearInterval(countdown);
-			currentTime = 0;
-			this.setTime(currentTime);
+			this.setTime(0);
 			isRunning = false;
 		},
 		isRunning: () => {
