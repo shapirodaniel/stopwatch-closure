@@ -50,13 +50,10 @@ const handleClick = button => {
 			if (!stopwatchInstance.isRunning()) {
 				stopwatchInstance.start();
 			}
-			break;
 		case 'stop':
 			stopwatchInstance.stop();
-			break;
 		case 'clear':
 			stopwatchInstance.clear();
-			break;
 	}
 };
 
