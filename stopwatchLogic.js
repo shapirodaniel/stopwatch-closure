@@ -5,11 +5,15 @@ const createStopwatch = () => {
 
 	return {
 		setTime: newDuration => {
-			if (typeof +newDuration !== 'number' || newDuration < 0) {
-				throw new Error('Please supply an non-negative integer value');
-			}
-			currentTime = newDuration;
-			document.getElementById('currentTime').innerText = currentTime;
+			try {
+                                if (typeof +newDuration !== 'number' || newDuration < 0) {
+				       throw new Error('Please supply a non-negative integer value');
+			        }
+			        currentTime = newDuration;
+			        document.getElementById('currentTime').innerText = currentTime;
+                        } catch (err) {
+                                return
+                        }
 		},
 		start: function () {
 			isRunning = true;
