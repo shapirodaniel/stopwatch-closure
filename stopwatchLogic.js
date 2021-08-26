@@ -72,6 +72,10 @@ const FACE = document.getElementById('face');
 const CURRENT_TIME = document.getElementById('currentTime');
 
 FACE.addEventListener('click', () => {
+	if (stopwatchInstance.isRunning()) {
+		return;
+	}
+
 	CURRENT_TIME.innerText = '';
 	CURRENT_TIME.contentEditable = true;
 	CURRENT_TIME.focus();
