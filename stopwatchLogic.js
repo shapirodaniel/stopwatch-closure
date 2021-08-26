@@ -12,6 +12,7 @@ const createStopwatch = () => {
 			document.getElementById('currentTime').innerText = currentTime;
 		},
 		start: function () {
+			console.log(currentTime);
 			isRunning = true;
 			countdown = setInterval(() => {
 				if (currentTime > 0) {
@@ -35,6 +36,9 @@ const createStopwatch = () => {
 		isRunning: () => {
 			return isRunning;
 		},
+		getCurrentTime: () => {
+			return currentTime;
+		},
 	};
 };
 
@@ -50,10 +54,13 @@ const handleClick = button => {
 			if (!stopwatchInstance.isRunning()) {
 				stopwatchInstance.start();
 			}
+			break;
 		case 'stop':
 			stopwatchInstance.stop();
+			break;
 		case 'clear':
 			stopwatchInstance.clear();
+			break;
 	}
 };
 
@@ -61,13 +68,20 @@ const handleClick = button => {
 	node.addEventListener('click', () => handleClick(node));
 });
 
+const FACE = document.getElementById('face');
 const CURRENT_TIME = document.getElementById('currentTime');
 
-CURRENT_TIME.addEventListener('click', () => {
+FACE.addEventListener('click', () => {
+	CURRENT_TIME.innerText = '';
 	CURRENT_TIME.contentEditable = true;
+	CURRENT_TIME.focus();
 });
 
 CURRENT_TIME.addEventListener('blur', () => {
-	stopwatchInstance.setTime(CURRENT_TIME.innerText);
+	stopwatchInstance.setTime(
+		CURRENT_TIME.innerText === ''
+			? stopwatchInstance.getCurrentTime()
+			: CURRENT_TIME.innerText
+	);
 	CURRENT_TIME.contentEditable = false;
 });
