@@ -1,3 +1,7 @@
+///////////////////////
+/* Stopwatch Builder */
+///////////////////////
+
 const createStopwatch = () => {
 	let currentTime = 0;
 	let countdown;
@@ -11,6 +15,7 @@ const createStopwatch = () => {
 			currentTime = newDuration;
 			document.getElementById('currentTime').innerText = currentTime;
 		},
+
 		start: function () {
 			console.log(currentTime);
 			isRunning = true;
@@ -19,34 +24,50 @@ const createStopwatch = () => {
 					currentTime--;
 					this.setTime(currentTime);
 				} else {
-					clearInterval(countdown);
+					this.stop();
 				}
 			}, 1000);
 		},
+
 		stop: () => {
 			clearInterval(countdown);
 			isRunning = false;
 		},
+
 		clear: function () {
 			clearInterval(countdown);
 			currentTime = 0;
 			this.setTime(currentTime);
 			isRunning = false;
 		},
+
 		isRunning: () => {
 			return isRunning;
 		},
+
 		getCurrentTime: () => {
 			return currentTime;
 		},
 	};
 };
 
+/////////////////////////////
+/* Instantiate a stopwatch */
+/////////////////////////////
+
 const stopwatchInstance = createStopwatch();
+
+///////////////////////////////////
+/* Grab our buttons from the DOM */
+///////////////////////////////////
 
 const START_BUTTON = document.getElementById('start');
 const PAUSE_BUTTON = document.getElementById('stop');
 const CLEAR_BUTTON = document.getElementById('clear');
+
+//////////////////////////////////////////////////////
+/* Define a click handler for each button in our UI */
+//////////////////////////////////////////////////////
 
 const handleClick = button => {
 	switch (button.id) {
@@ -64,12 +85,20 @@ const handleClick = button => {
 	}
 };
 
+/////////////////////////////////////////
+/* Assign click handler to each button */
+/////////////////////////////////////////
+
 [START_BUTTON, PAUSE_BUTTON, CLEAR_BUTTON].forEach(node => {
 	node.addEventListener('click', () => handleClick(node));
 });
 
 const FACE = document.getElementById('face');
 const CURRENT_TIME = document.getElementById('currentTime');
+
+///////////////////////////////////////////////////////////////////////
+/* Assign listeners that will let us modify the start time through UI*/
+///////////////////////////////////////////////////////////////////////
 
 FACE.addEventListener('click', () => {
 	if (stopwatchInstance.isRunning()) {
