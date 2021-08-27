@@ -1,0 +1,32 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-color: black;
+}
+
+button {
+	height: 4em;
+	padding: 1em;
+	color: lightblue;
+	background-color: black;
+	border: none;
+	margin: 1em;
+	font-size: 24px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid lightblue;
+}
+
+#message {
+	color: lightblue;
+	font-size: 2em;
+	padding-bottom: 3em;
+	text-align: center;
+	padding: 2em;
+}
