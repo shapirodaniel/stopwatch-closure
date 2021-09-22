@@ -2,7 +2,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	height: 100vh;
 	width: 100vw;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -11,7 +11,10 @@ body {
 }
 
 button {
-	height: 4em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2em;
 	padding: 1em;
 	color: lightblue;
 	background-color: black;
@@ -25,7 +28,7 @@ button {
 
 #message {
 	color: lightblue;
-	font-size: 2em;
+	font-size: 1.2em;
 	padding-bottom: 3em;
 	text-align: center;
 	padding: 2em;
